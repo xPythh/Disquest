@@ -9,7 +9,7 @@ module.exports = class {
 	#headers = null;
 	#user = null;
 
-	get User() { return this.#user }
+	get user() { return this.#user }
 
 	get Application() { 
 		var newApplication = new Application();
