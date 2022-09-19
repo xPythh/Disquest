@@ -7,7 +7,7 @@ Basic example
 {
 	var disquest = require("disquest");
 	await Client.Initialise();
-	var relationShips = await Client.getRelationShips();
+	var relationShips = await Client.user.getRelationShips();
 	for (var person of await relationShips)
 	{
 		if (person.type === 1) // 1 = In friend list
