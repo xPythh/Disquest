@@ -1,0 +1,97 @@
+	Client Class
+		> get User : SelfUser instance
+		> get Application : Application instance
+
+		> function constructor(STRING token) : Client
+			| Initialisate a new Disquest client instance
+		> function Initialise() : null
+			| Generate and obtain data in order to work with the discord api
+		> function getBots() : []object
+			| Return a list of bots created bu the account
+		> function getGiftCodes() : []Gift
+			| Return all inventory gift codes
+	
+	SelfUser Class
+		> function setPassword(STRING accountPassword) : null
+			| Required to use some methods
+		> function getBillingSources() : []object
+			| Return all payment sources on the account
+		> function getSubscription() : object
+			| Return account subscription aswell as instances of BOOSTS if has Nitro
+		> function getRelationShips() : []User
+			| Return all users (friends, pending friends request, blocked)
+		> function getOpenDms() : []object
+			| Return all function oppened dms on the account
+		> function getServers() : []object
+			| Return all servers the account is on
+		> function updateUsername(STRING username, STRING discriminator) : Discord Response
+			| Update the account username (require nitro for discriminator, require setPassword to be used beforehand), both username & discriminator are optional 
+		> function sendUpdateEmailCode() : null
+			| Send an email confirmation to get a verificationCode in order to update the account email
+		> function updateEmail(STRING email, STRING verificationCode) : Discord Response
+			| Update the account email (require setPassword to be used beforehand)
+		> function updatePassword(STRING newPassword, STRING authentificatorCode) : Discord Response
+			| Update the account password (require setPassword to be used beforehand & 2FA code if enabled)
+		> function updateAvatar(STRING filePath) : Discord Response
+			| Update the discord avatar
+		> function updateBannerColor(STRING hexColor) : Discord Response
+			| Change the profile banner color
+		> function updateBannerPicture(STRING filePath) : Discord Response
+			| Change the profile banner picture (Require discord nitro boost)
+		> function updateBio(STRING aboutMeMessage) : Discord Response
+			| Change the discord Bio (About me)
+		> function enableDirectDms(BOOL enabled) : null
+			| Enable/Disable direct message from strangers on common servers
+		> function getAuthorizedApp() : Discord Response
+			| Return the list of authorized app on discord
+	
+
+
+	Boost Class
+		> function removeFromServer() : null 
+			| Remove the boost from the server it is on
+		> function putOnServer(STRING serverId) : Discord Response
+			| Put the boost on the server ID entered
+		> function transfertToServer(STRING guildId)
+			| Transfert the boost on the server ID entered (Require the boost to have been transfered/added at least 7 days ago)
+	
+	
+	Gift Class
+		> function generate() : Discord Response
+			| Generate a link that is revoked/expired
+		> function claim() : null
+			| Claim a link from the inventory
+		> function revoke() : null
+			| Revoke a link from the inventory
+
+	
+	User Class
+		> function send(STRING message) : Discord Response
+			| Send a message to an user
+		> function block(BOOL shouldBlock) : null
+			| Block a discord user
+		> addFriend() : null
+			| Add someone as a friend/Accept a friend request
+		> removeFriend() : null
+			| Remove someone from the friendlist
+		> getProfile() : Discord Response
+			| Get someone profile
+
+	
+	Application Class
+		> function create(STRING applicationName) : Discord Response
+			| Create a new application
+		> function fetch(STRING applicationId) : Discord Response
+			| Fetch an application 
+		> function createBot() : Bot
+			| Create a Discord bot out of this application and return a Bot Instance
+		> function updateName(STRING applicationName)
+			| Update the application name
+		> function updateDescription(STRING applicationDescription)
+			| Update the application description
+		> function deauthorize()
+			| Remove an authorized app (Only usable from the getAuthorizedApp method)
+
+		> function getOpenDms() : []object
+			| List all oppened private messages
+		>
